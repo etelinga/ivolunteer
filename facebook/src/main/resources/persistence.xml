@@ -1,0 +1,52 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+    <persistence-unit name="serverPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>org.actionfeed.domain.persistence.Event</class>
+        <class>org.actionfeed.domain.persistence.Distance</class>
+        <class>org.actionfeed.domain.persistence.Filter</class>
+        <class>org.actionfeed.domain.persistence.Integration</class>
+        <class>org.actionfeed.domain.persistence.InterestArea</class>
+        <class>org.actionfeed.domain.persistence.Location</class>
+        <class>org.actionfeed.domain.persistence.Network</class>
+        <class>org.actionfeed.domain.persistence.Organization</class>
+        <class>org.actionfeed.domain.persistence.OrganizationType</class>
+        <class>org.actionfeed.domain.persistence.Source</class>
+        <class>org.actionfeed.domain.persistence.SourceInterestMap</class>
+        <class>org.actionfeed.domain.persistence.SourceOrgTypeMap</class>
+        <class>org.actionfeed.domain.persistence.Timeframe</class>
+        <class>org.actionfeed.domain.persistence.Timestamp</class>
+        <properties>
+            <!-- Only scan and detect annotated entities -->
+            <property name="hibernate.archive.autodetection" value="class"/>
+
+            <!-- SQL stdout logging -->
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="use_sql_comments" value="true"/>
+
+            <property name="hibernate.connection.driver_class" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/ivolunteer?createDatabaseIfNotExist=true"/>
+            <property name="hibernate.connection.username" value="action"/>
+            <property name="hibernate.connection.password" value="action"/>
+
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <!-- Create the database schema when this test.persistence unit is deployed, drop
+                 it (clean the database) when it is undeployed
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+
+        </properties>
+
+    </persistence-unit>
+</persistence>

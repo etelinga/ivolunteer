@@ -1,0 +1,4 @@
+<c:set var="menu_home"><s:message code="menu.home"/></c:set>
+<c:set var="menu_friend"><s:message code="menu.friend"/></c:set>
+<a href="home.xhtml">Home</a> <c:if test="${menu == menu_home}">Selected</c:if>
+<a href="profile.xhtml">Profile</a>

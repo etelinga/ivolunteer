@@ -1,0 +1,5 @@
+<root>
+    <item name='org.actionfeed.domain.dao.HibernateDao org.hibernate.Query createHibernateQuery(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

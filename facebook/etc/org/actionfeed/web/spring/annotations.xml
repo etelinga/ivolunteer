@@ -1,0 +1,5 @@
+<root>
+    <item name='org.actionfeed.web.spring.ApplicationExceptionResolver org.springframework.web.servlet.ModelAndView getModelAndView(java.lang.String, java.lang.Exception, javax.servlet.http.HttpServletRequest)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

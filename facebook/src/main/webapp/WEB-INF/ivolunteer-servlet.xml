@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+    "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+    <!--
+        COMMANDS
+         Commands are used by normal controllers that extend BaseActionFeedController. They produce any necessary
+         data required by a list based page, for a example all of the events for a given user. The
+         command can also be used by the error page to reconstruct the necessary list before redisplay with
+         the appended exception message.
+    -->
+    <bean id="baseCommand" abstract="true">
+        <property name="actionFeedService" ref="service"/>
+        <property name="facebookService" ref="facebookService"/>
+    </bean>
+
+    <!--
+        The home command is the base page we present to the facebook users.
+    -->
+    <bean id="homeCommand" class="org.actionfeed.web.command.HomeCommand" parent="baseCommand"/>
+
+    <!--
+        VALIDATORS
+        These are hibernate based validators that are used in the edit phase for any form using annotations.
+     -->
+    <bean id="profileValidator" class="org.actionfeed.web.validator.ProfileValidator"/>
+
+    <!-- CONTROLLERS  -->
+
+    <!-- Defines the base edit controller where common properties are wired for all edit controllers -->
+    <bean id="baseEditController" abstract="true">
+        <property name="applicationService" ref="service"/>
+        <property name="facebookService" ref="facebookService"/>
+    </bean>
+
+    <!-- This is a base controller no editing involved -->
+    <bean id="baseController" abstract="true">
+        <property name="applicationService" ref="service"/>
+        <property name="facebookService" ref="facebookService"/>
+    </bean>
+
+    <!--
+        Base local edit is used only for testing and can be removed when finally deployed.
+    -->
+    <bean id="baseLocalEditController" abstract="true">
+        <property name="applicationService" ref="service"/>
+        <property name="facebookService" ref="localFacebookService"/>
+    </bean>
+
+
+    <!--
+        The homeController is different in that if we are coming in for the first time we display the about
+        page since the user hasn't added our application to their profile. This is determined when the normal
+        parameters sent by FB aren't present, only the base properties are sent, no session key, etc. The
+        FacebookInterceptor determines this and the HomeController uses it to determine the path.
+    -->
+    <bean id="homeController" class="org.actionfeed.web.controller.HomeController" parent="baseController">
+        <property name="homeViewName" value="home"/>
+        <property name="aboutViewName" value="about"/>
+        <property name="viewCommand" ref="homeCommand"/>
+    </bean>
+
+    <!-- Change the addController if modifying this controller -->
+    <bean id="editProfileController" class="org.actionfeed.web.controller.EditProfileController" parent="baseEditController">
+        <property name="commandName" value="profile"/>
+        <property name="commandClass" value="org.actionfeed.web.model.ProfileFormModel"/>
+        <property name="validator" ref="profileValidator"/>
+        <property name="formView" value="profile"/>
+        <property name="successView" value="home"/>
+    </bean>
+
+    <!-- Change the editProfileController if modifying this controller -->
+    <bean id="addController" class="org.actionfeed.web.controller.EditProfileController" parent="baseEditController">
+        <property name="commandName" value="profile"/>
+        <property name="commandClass" value="org.actionfeed.web.model.ProfileFormModel"/>
+        <property name="validator" ref="profileValidator"/>
+        <property name="formView" value="profile"/>
+        <property name="successView" value="invite"/>
+    </bean>
+
+    <bean id="inviteController" class="org.actionfeed.web.controller.InviteController" parent="baseEditController">
+        <property name="commandName" value="invite"/>
+        <property name="commandClass" value="org.actionfeed.web.model.InviteFormModel"/>
+        <property name="formView" value="invite"/>
+        <property name="successView" value="home"/>
+        <property name="viewCommand" ref="homeCommand"/>
+    </bean>
+
+    <bean id="helpController" class="org.actionfeed.web.controller.BaseApplicationController" parent="baseController">
+        <property name="viewName" value="help"/>
+    </bean>
+
+    <!--
+        HANDLER MAPPINGS
+        Should remove the test stuff somehow when running with the real container.
+    -->
+    <bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="openSessionInAView"/>
+                <ref bean="facebookInterceptor"/>
+            </list>
+        </property>
+        <property name="rootHandler" ref="homeController"/>
+        <property name="urlMap">
+            <map>
+                <entry key="/home.xhtml" value-ref="homeController"/>
+                <entry key="/profile.xhtml" value-ref="editProfileController"/>
+                <entry key="/help.xhtml" value-ref="helpController"/>
+                <entry key="/invite.xhtml" value-ref="inviteController"/>
+                <entry key="/add.xhtml" value-ref="addController"/>
+                <entry key="/" value-ref="homeController"/>
+                <entry key="/test/home.xhtml" value-ref="testHomeController"/>
+                <entry key="/test/profile.xhtml" value-ref="testEditProfileController"/>
+                <entry key="/test/invite.xhtml" value-ref="testInviteController"/>
+                <entry key="/test/add.xhtml" value-ref="testAddController"/>
+            </map>
+        </property>
+
+    </bean>
+
+    <!--
+    Test stuff for localhost only
+        viewName: Name of the Controller minus the Controller extension.
+    -->
+
+    <bean id="testHomeController" class="org.actionfeed.web.controller.BaseApplicationController" parent="baseController">
+        <property name="viewName" value="testHome"/>
+        <property name="viewCommand" ref="homeCommand"/>
+    </bean>
+
+    <bean id="testEditProfileController" class="org.actionfeed.web.controller.EditProfileController"
+          parent="baseLocalEditController">
+        <property name="commandName" value="profile"/>
+        <property name="commandClass" value="org.actionfeed.web.model.ProfileFormModel"/>
+        <property name="validator" ref="profileValidator"/>
+        <property name="formView" value="testEditProfile"/>
+        <property name="successView" value="home"/>
+    </bean>
+
+    <bean id="testAddController" class="org.actionfeed.web.controller.EditProfileController"
+          parent="baseEditController">
+        <property name="commandName" value="profile"/>
+        <property name="commandClass" value="org.actionfeed.web.model.ProfileFormModel"/>
+        <property name="validator" ref="profileValidator"/>
+        <property name="formView" value="testEditProfile"/>
+        <property name="successView" value="invite"/>
+    </bean>
+
+
+    <bean id="testInviteController" class="org.actionfeed.web.controller.InviteController" parent="baseEditController">
+        <property name="commandName" value="invite"/>
+        <property name="commandClass" value="org.actionfeed.web.model.InviteFormModel"/>
+        <property name="formView" value="testInvite"/>
+        <property name="successView" value="home"/>
+    </bean>
+
+
+    <bean id="testFailureController" class="org.actionfeed.web.controller.BaseApplicationController" parent="baseController">
+        <property name="viewName" value="testDownAndOut"/>
+    </bean>
+
+    <!-- Stuff that shouldn't change much and is single source is after here -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="2"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <!--<property name="alwaysInclude" value="true"/>-->
+    </bean>
+
+    <!-- Ensure the message is coming from FB and we get or create the associated user -->
+    <bean id="facebookInterceptor" class="org.actionfeed.web.spring.FacebookInterceptor">
+        <property name="service" ref="service"/>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <!-- For a Reloadable version one must specify the exact location the the bundle files. -->
+        <property name="basename" value="WEB-INF/classes/ApplicationResources"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+        <!-- Change the cacheSeconds to 0 to turn it off. Setting a value of 1 second seems to work well. -->
+        <property name="cacheSeconds" value="1"/>
+    </bean>
+
+
+    <!-- The error views are defined in the context.xml or in the overriding properties file -->
+    <bean id="openSessionInAView" class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- The parent bean is defined in applicationContext-resources so that the property configurator works -->
+    <bean id="exceptionResolver" parent="baseExceptionResolver">
+        <property name="defaultCommand" ref="homeCommand"/>
+    </bean>
+
+</beans>
+

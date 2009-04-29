@@ -1,0 +1,107 @@
+<root>
+    <item name='org.actionfeed.service.BaseService org.actionfeed.domain.model.BaseModel getModel(java.lang.Class, java.io.Serializable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService org.actionfeed.domain.model.BaseModel getModel(java.lang.Class, java.io.Serializable) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService void deleteModel(org.actionfeed.domain.model.Model) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService void deleteModel(java.lang.Class, java.io.Serializable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService void deleteModel(java.lang.Class, java.io.Serializable) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService void deleteModel(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService void setCacheService(org.actionfeed.service.CacheService) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService void setHibernateDao(org.actionfeed.domain.dao.HibernateDao) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService org.actionfeed.domain.dao.HibernateDao getHibernateDao()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService org.actionfeed.service.CacheService getCacheService()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService org.actionfeed.domain.model.BaseModel getModelUsingKeyField(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.BaseService org.actionfeed.domain.model.BaseModel getModelUsingKeyField(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.ApplicationService java.util.List<java.lang.Long> listMemberFriends(org.actionfeed.web.model.BaseFacebookModel) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.ApplicationService org.actionfeed.domain.model.Volunteer getMemberProfile(org.actionfeed.web.model.BaseFacebookModel)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.ApplicationService org.actionfeed.domain.model.Volunteer getMember(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.ApplicationService org.actionfeed.domain.model.Volunteer getMember(org.actionfeed.web.model.BaseFacebookModel)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void resetMemberCache(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void put(java.lang.String, java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void put(java.lang.String, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl java.lang.Object get(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl java.lang.Object get(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void remove(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void remove(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl net.sf.ehcache.Element getElement(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl net.sf.ehcache.Element getElement(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void putElement(java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.CacheServiceImpl void putElement(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService void remove(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService void remove(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService java.lang.Object get(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService java.lang.Object get(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService void put(java.lang.String, java.lang.String, java.lang.Object) 2'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService void put(java.lang.String, java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService void put(java.lang.String, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+    <item name='org.actionfeed.service.CacheService java.lang.Object get(java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.Nullable'/>
+    </item>
+</root>

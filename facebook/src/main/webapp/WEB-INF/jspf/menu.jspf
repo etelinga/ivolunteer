@@ -1,0 +1,20 @@
+<c:set var="menu_home"><s:message code="menu.home"/></c:set>
+<c:set var="menu_past"><s:message code="menu.past"/></c:set>
+<c:set var="menu_friend"><s:message code="menu.friend"/></c:set>
+<c:set var="home_title"><s:message code="menu.home.title"/></c:set>
+<c:set var="past_title"><s:message code="menu.past.title"/></c:set>
+<c:set var="friend_title"><s:message code="menu.friend.title"/></c:set>
+<fb:dashboard>
+    <fb:action href="http://apps.facebook.com/actionfeed/profile.xhtml" title="Set your preferences">Preferences</fb:action>
+    <fb:help href="help.xhtml">Help</fb:help>
+</fb:dashboard>
+<fb:tabs>
+    <c:choose><c:when test="${menu == menu_home}"><c:set var="selected">selected="true"</c:set></c:when><c:otherwise><c:set var="selected"/></c:otherwise></c:choose>
+    <fb:tab-item href="home.xhtml" title="${home_title}" ${selected}/>
+    <c:choose><c:when test="${menu == menu_past}"><c:set var="selected">selected="true"</c:set></c:when><c:otherwise><c:set var="selected"/></c:otherwise></c:choose>
+    <fb:tab-item href="pastEvents.xhtml" title="${stuff_title}" ${selected}/>
+    <c:choose><c:when test="${menu == menu_friend}"><c:set var="selected">selected="true"</c:set></c:when><c:otherwise><c:set var="selected"/></c:otherwise></c:choose>
+    <fb:tab-item href="friendEvents.xhtml" title="${friend_title}" ${selected}/>
+    <fb:tab-item href="invite.xhtml" title="Invite"/>
+</fb:tabs>
+

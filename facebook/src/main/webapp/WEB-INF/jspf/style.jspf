@@ -1,0 +1,133 @@
+<style type="text/css">
+.lists th {
+    text-align: left;
+    padding: 5px 10px;
+    background: #6d84b4;
+}
+
+.lists .spacer {
+    background: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    width: 10px;
+}
+
+.lists th h4 {
+    float: left;
+    color: white;
+}
+
+.lists th a {
+    float: right;
+    font-weight: normal;
+    color: #d9dfea;
+}
+
+.lists th a:hover {
+    color: white;
+}
+
+.lists td {
+    margin: 0px 10px;
+    padding: 0px;
+    vertical-align: top;
+    width: 612px;
+}
+
+.lists .list {
+    background: white none repeat scroll 0%;
+    border-color: #E5E5E5;
+    border-style: none solid;
+    border-width: medium 1px;
+}
+
+.lists .list .list_item {
+    border-top: 1px solid #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
+    padding-bottom:10px
+}
+
+.lists .list .list_item.first {
+    border-top: none;
+}
+
+.lists .see_all {
+    background: white none repeat scroll 0%;
+    border-color: -moz-use-text-color #BBBBBB rgb( 187, 187, 187 );
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    text-align: left;
+}
+
+.lists .see_all div {
+    border-top: 1px solid #E5E5E5;
+    padding: 5px 10px;
+}
+
+ul#navigation {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+ul#navigation li {
+    display: inline;
+    float: left;
+}
+
+ul#navigation .current {
+    background: transparent none repeat scroll 0;
+    color: #3B5998;
+    border-bottom: 2px solid #3B5998;
+    font-weight: bold;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+ul#navigation a {
+    display: block;
+    color: #3B5998;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 2px;
+    text-decoration: none;
+}
+
+.header {
+    background-color: #F9F9F9;
+    border-bottom-color: #CCCCCC;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.tags {
+    padding-top: 10px;
+}
+
+.new:active, .new:active .bl {
+    background-image: url( "/images/button_active.gif" );
+}
+
+.new .bl {
+    background: transparent url( "/images/arrow_up.png" ) no-repeat scroll 0;
+    color: #777777;
+    display: block;
+    float: left;
+    text-decoration: none;
+}
+
+.new {
+    background: transparent url( "/images/new_media_button_plus.gif" ) no-repeat scroll 9px center;
+    color: #333333;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 9px 5px 22px;
+    text-shadow: white 0px 1px 1px;
+}
+</style>

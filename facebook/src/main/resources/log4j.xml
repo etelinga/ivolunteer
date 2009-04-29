@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{ISO8601} %p [%t] %c{3}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="messages" class="org.apache.log4j.FileAppender">
+        <param name="File" value="${webapp.root}/logs/message_log.txt"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{ISO8601} %p [%t] %c{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="exception" class="org.apache.log4j.FileAppender">
+        <param name="File" value="${webapp.root}/logs/exception_log.txt"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{ISO8601} %p [%t] %c{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="trace" class="org.apache.log4j.FileAppender">
+        <param name="File" value="${webapp.root}/logs/trace_log.txt"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{ISO8601} %p [%t] %c{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <!--
+        <appender name="monitor" class="com.webspherious.log4jmonitor.log4j.IntelliJAppender">
+            <param name="RemoteHost" value="localhost"/>
+            <param name="Port" value="4445"/>
+            <param name="LocationInfo" value="true"/>
+            <layout class="org.apache.log4j.PatternLayout">
+                <param name="ConversionPattern"
+                       value="%d{ISO8601} %p [%t] %c{1}.%M(%L) | %m%n"/>
+            </layout>
+        </appender>
+    -->
+
+    <appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${webapp.root}/logs/rolling_log.txt"/>
+        <param name="maxFileSize" value="150KB"/>
+        <param name="maxBackupIndex" value="5"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{ISO8601} %p [%t] %c{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="net.sf.ehcache">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.apache">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.hibernate">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.hibernate.SQL">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.hibernate.type">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="WARN"/>
+        <!--<appender-ref ref="rolling"/>-->
+    </logger>
+
+    <logger name="org.springframework.orm">
+        <level value="WARN"/>
+        <!--<appender-ref ref="rolling"/>-->
+    </logger>
+
+    <logger name="org.apache.commons.validator.ValidatorResources">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.actionfeed">
+        <level value="TRACE"/>
+    </logger>
+
+    <logger name="org.actionfeed.exception">
+        <level value="WARN"/>
+<!--
+        <appender-ref ref="exception"/>
+-->
+    </logger>
+
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>
