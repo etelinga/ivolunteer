@@ -9,8 +9,19 @@
 #import "ProjectViewController.h"
 #import "iPhoneAppDelegate.h"
 
+#import "EventsSortedByTimeDataSource.h"
+#import "EventTableCell.h"
+
 
 @implementation ProjectViewController
+
+@synthesize refreshButton;
+@synthesize detailsController;
+@synthesize dataSource;
+@synthesize busyIndicatorDelegate;
+@synthesize settingsButtonItem;
+@synthesize sortButtonItem;
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -18,7 +29,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 1;
 }
 
 
@@ -32,23 +43,46 @@
     }
     
     // Set up the cell
-	cell.text = [[NSString alloc] initWithFormat:@"%i",[indexPath indexAtPosition:1]];
+	 cell.text = @"Loading.."; //[[NSString alloc] initWithFormat:@"%i",[indexPath indexAtPosition:1]];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic -- create and push a new view controller
+   //forward to the accessory button
+   [self tableView: tableView accessoryButtonTappedForRowWithIndexPath: indexPath ];
+   [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void) tableView: (UITableView*) tableView accessoryButtonTappedForRowWithIndexPath: (NSIndexPath*) indexPath
+{      
+   Event *event = (Event *)[self.dataSource objectForIndexPath: indexPath ];
+   if( self.detailsController == nil ) {
+      self.detailsController = [EventDetailsTableViewController viewWithEvent: event ];
+   }
+   else {
+      self.detailsController.event = event;
+   }
+	self.detailsController.busyIndicatorDelegate = self.busyIndicatorDelegate;
+	
+   [self.navigationController pushViewController:self.detailsController animated: YES];
+}
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   return [ EventTableCell height];
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Uncomment the following line to add the Edit button to the navigation bar.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   [super viewDidLoad];
+   self.detailsController = nil;
+   // Uncomment the following line to add the Edit button to the navigation bar.
+   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   //self.sortButtonItem = [[[UIBarButtonItem alloc] initWithTitle: @"Sort" style: UIBarButtonItemStylePlain target: self action:@selector(sort)] autorelease];
+   //self.navigationItem.rightBarButtonItem = self.sortButtonItem;
+   self.dataSource = [EventsSortedByTimeDataSource dataSource];
+   [[self tableView] setDataSource: self.dataSource ];
 }
-*/
 
 
 /*
@@ -122,9 +156,32 @@
 
 
 - (void)dealloc {
+	[refreshButton release];
+	[detailsController release];
+	[dataSource release];
+	[(NSObject *) busyIndicatorDelegate release];
+	[dataSource release];
+	[settingsButtonItem release];
+	[sortButtonItem release];
+	
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark LocationAvailabilityDelegate methods
+
+- (void)locationIsAvailable:(CLLocation *)location
+{
+}
+
+
+- (void) settings 
+{
+}
+
+- (void) sort 
+{
+}
 
 @end
 
