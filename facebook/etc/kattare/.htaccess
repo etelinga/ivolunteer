@@ -1,0 +1,1 @@
+ErrorDocument 502 "<fb:fbml><fb:title>Errors. We don't need no stinkin errors.</fb:title>Well, something bad happened and the server isn't available. So try back again in a bit. We'll find someone, somewhere to fix it for ya.</fb:fbml>"

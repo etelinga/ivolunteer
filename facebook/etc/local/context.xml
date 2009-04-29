@@ -1,0 +1,47 @@
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+    <!--
+       The following parameters MUST be defined for each instance.
+    -->
+
+    <!--
+      Mail settings use JNDI
+    -->
+    <!--
+    <Environment name="mail/host" type="java.lang.String" value="a@b.c"/>
+    <Environment name="mail/fromAddress" type="java.lang.String" value="a@b.c"/>
+    <Environment name="mail/toAddress" type="java.lang.String" value="a@b.c"/>
+    These additional parameters are recognized if necessary.
+    <Environment name="mail/port" type="java.lang.Integer" value="-1"/>
+    <Environment name="mail/protocol" type="java.lang.String" value="smtp"/>
+    <Environment name="mail/username" type="java.lang.String" value=""/>
+    <Environment name="mail/password" type="java.lang.String" value=""/>
+    -->
+
+    <!--
+       JDBC Connection properties to be assigned per application. Definitions for Bliss
+    -->
+    <Parameter name="jdbc.username" value="action"/>
+    <Parameter name="jdbc.password" value="action"/>
+    <Parameter name="jdbc.url" value="jdbc:mysql://localhost:3306/ivolunteer?createDatabaseIfNotExist=true"/>
+    <Parameter name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
+    <Parameter name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+	
+    <!-- Uncomment this to disable session persistence across Tomcat restarts. -->
+    <Manager pathname="" />
+
+    <!--  For Hibernate -->
+    <Parameter name="hibernate.showsql" value="true"/>
+
+    <!-- Spring MVC Configuation. -->
+
+    <!-- These parameters are used by the exception handler and refernced in the appContext-resources so that
+    the property placeholder stuff works. It's defined abstract there and extended in the ivolunteer-servlet.xml file
+    with the necessary parameters for the container. -->
+    <Parameter name="exception.failure.view" value="testDownAndOut"/>
+    <Parameter name="exception.error.view" value="testHome"/>
+
+</Context>

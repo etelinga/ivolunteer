@@ -1,0 +1,27 @@
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+    <!-- Kattare context file for PMS -->
+
+    <Parameter name="jdbc.username" value="etelinga"/>
+    <Parameter name="jdbc.password" value="db-ctbka323"/>
+    <Parameter name="jdbc.driverClassName" value="com.mysql.jdbc.Driver"/>
+    <Parameter name="jdbc.url" value="jdbc:mysql://dc2-mysql-02.kattare.com/etelinga"/>
+    <Parameter name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+    <!-- Uncomment this to disable session persistence across Tomcat restarts. -->
+    <Manager pathname="" />
+
+    <!--  For Hibernate -->
+    <Parameter name="hibernate.showsql" value="false"/>
+
+    <!-- Spring MVC Configuation. -->
+
+    <!-- These parameters are used by the exception handler and refernced in the appContext-resources so that
+    the property placeholder stuff works. It's defined abstract there and extended in the app-servlet.xml file
+    with the necessary parameters for the container. -->
+    <Parameter name="exception.failure.view" value="downAndOut"/>
+    <Parameter name="exception.error.view" value="home"/>
+
+</Context>

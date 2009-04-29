@@ -1,0 +1,7 @@
+GIT Notes:
+
+http://actionfeed.org/server/resources/organizationTypes/list
+
+To setup JPA for use within Tomcat follow these steps:
+
+1. Copy spring-tomcat-waver.jar into $CATALINA_HOME/lib

@@ -1,0 +1,14 @@
+ facebook/etc/kattare/.htaccess
+ facebook/etc/kattare/context.xml
+ facebook/etc/kattare/import.sql
+ facebook/etc/local/context.xml
+ facebook/etc/local/hibernate.cfg.xml
+ facebook/etc/local/jndiContext.xml
+ facebook/etc/notes.txt
+ facebook/ivolunteer.iml
+ facebook/ivolunteer.ipr
+ facebook/ivolunteer.iws
+ facebook/src/test/Test.iml
+ ivolunteer.ipr
+ facebook/target/**
+ *.iml
